@@ -305,6 +305,9 @@ app.listen(PORT, async () => {
     // await MatchRequest.sync();
     // await PointHistory.sync();
 
+    // 모델에 정의된 테이블 생성
+    await sequelize.sync();
+
     const adminCount = await Admin.count();
     if (adminCount === 0) {
       const hashedAdminPassword = await bcrypt.hash(process.env.DB_ADMINPASSWORD, 10);
