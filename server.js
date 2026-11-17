@@ -19,7 +19,9 @@ const mapRouter = require('./routes/map');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.RENDER === 'true' ? ['http://heartbreakkid.co.kr'] : '*',
+}));
 app.use(express.json());
 
 // router 연결
