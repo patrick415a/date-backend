@@ -294,7 +294,7 @@ app.post('/api/social-login', async (req, res) => {
 });
 
 const PORT = 3000;
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', async () => {
   try {
     await sequelize.authenticate();
     // 👉 1. 기존에 꼬여있는 테이블들을 밀어버리기 위해 '관계 보호 장치'를 잠시 끕니다.
