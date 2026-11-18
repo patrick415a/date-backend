@@ -258,7 +258,7 @@ app.patch('/api/admin/users/:id/approve', async (req, res) => {
   }
 });
 
-const PORT = 3000;
+const PORT = Number(process.env.PORT || 3000);
 app.listen(PORT, '0.0.0.0', async () => {
   try {
     await sequelize.authenticate();
