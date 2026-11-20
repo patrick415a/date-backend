@@ -20,6 +20,13 @@ const { router: socialLoginRouter, oauthOrigins } = require('./routes/socialLogi
 
 const app = express();
 
+// 인증이나 DB 조회 없이 응답하는 모니터링 전용 API
+app.options('/api/status', cors());
+app.get('/api/status', cors(), (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  res.status(200).json({ status: 'ok' });
+});
+
 app.use(cors({
   origin: process.env.RENDER === 'true' ? [
     'http://heartbreakkid.co.kr', 'http://www.heartbreakkid.co.kr',
